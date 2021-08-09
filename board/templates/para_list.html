@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>게시글 목록</title>
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+{% endblock css %}
+
+{% block content %}
+<table class="table table-hover table-responsive">
+    <thead>
+        <th>번호</th><th>제목</th><th>작성자</th>
+    </thead>
+    <tbody>
+        {% for para in paras %}
+        <tr onclick="location.href='/para/{{ para.pk }}/'">
+            <td>{{ para.pk }}</td><td>{{ para.title }}</td><td>{{ para.author }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="/para/create/"><button class="btn btn-primary" type="button">새 게시글 작성</button></a>
+{% endblock content %}

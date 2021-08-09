@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>게시글 상세 - {{ para.pk }}. {{ pk.title }}</title>
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+{% endblock css %}
+
+{% block content %}
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>번호</th>
+        <td>{{ para.pk }}</td>
+    </tr>
+    <tr>
+        <th>제목</th>
+        <td>{{ para.title }}</td>
+    </tr>
+    <tr>
+        <th>내용</th>
+        <td>{{ para.content | linebreaksbr }}</td>
+    </tr>
+    <tr>
+        <th>작성자</th>
+        <td>{{ para.author }}</td>
+    </tr>
+    <tr>
+        <th>일자</th>
+        <td>{{ para.date | date:"Y-m-d H:i" }}</td>
+    </tr>
+</table>
+
+<a href="/para/{{ para.pk }}/update/"><button class="btn btn-primary" type="button">게시글 수정</button></a>
+{% endblock content %}

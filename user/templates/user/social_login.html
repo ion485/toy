@@ -1,0 +1,29 @@
+{% load static %}
+
+{% static 'login/img/naver_login_green.png' as naver_button %}
+{% static 'login/img/kakao_login2.png' as kakao_button %}
+
+
+{% comment %} <div class="panel panel-default login"> {% endcomment %}
+    {% comment %} <div class="panel-heading">
+        소셜 로그인
+    </div> {% endcomment %}
+    <div class="panel-body text-center">
+        <div class="pull-center">
+            <a href="#" onclick="naverLogin()">
+                <img src="{{ naver_button }}"height="34">
+            </a>
+        </div>
+    </div>
+    <div class="panel-body text-center">
+        <div class="pull-center">
+            <a href="#" onclick="kakaoLogin()">
+                <img src="{{ kakao_button }}"height="34">
+            </a>
+        </div>
+    </div>
+
+<script src="{% static 'user/js/social_java.js' %}"></script>
+
+{% comment %} </div> {% endcomment %}
+        
