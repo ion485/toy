@@ -74,7 +74,7 @@ class NaverMixin:
         # else:
         #     return False, '이미 존재하는 계정입니다.'
 
-        login(self.request, user, 'user.oauth.backends.NaverBackend')
+        login(self.request, user, 'user.oauth.backends.MyBackend')
 
         self.set_session(access_token=access_token, refresh_token=refresh_token, expires_in=expires_in, token_type=token_type)
 

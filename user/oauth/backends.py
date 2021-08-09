@@ -6,7 +6,7 @@ from user.models import User
 UserModel = User
 
 
-class NaverBackend(ModelBackend):
+class MyBackend(ModelBackend):
     def authenticate(self, request, name=None,**kwargs):
         if name is None:
             name = kwargs.get(UserModel.USERNAME_FIELD)

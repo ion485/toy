@@ -10,10 +10,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from board.models import para
 
-
-def hello(request, var):
-    return HttpResponse('Hello {}'.format(var))
-
 class paraListView(LoginRequiredMixin, TemplateView):
     template_name = 'para_list.html'
     queryset = para.objects.all()

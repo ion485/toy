@@ -16,13 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from board.views import hello, paraListView, paraDetailView, paraCUView
+from board.views import paraListView, paraDetailView, paraCUView
 from user.views import UserRegistView, UserLoginView, NaverLoginCallbackView, KakaoLoginCallbackView
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
-    path('hello/<var>', hello),
-
     path('para/', paraListView.as_view()),
     path('para/create/', paraCUView.as_view()),
     path('para/<para_id>/', paraDetailView.as_view()),
