@@ -32,8 +32,8 @@ INSTALLED_APPS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
     'user.oauth.backends.MyBackend',
-    'django.contrib.auth.backends.ModelBackend'
 )
 
 SITE_ID = 1
@@ -134,6 +134,12 @@ NAVER_SECRET_KEY = 'e5cdPftIq0'
 
 KAKAO_CLIENT_ID = '9a9ab333b1c1d2d29edfe226aaf707c6'
 KAKAO_SECRET_KEY = 'JvJbaqfnLJ4keLo8YEGN0g8DV4hgP5vK'
+
+EMAIL_HOST = 'smtp.naver.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ion485@naver.com'
+EMAIL_HOST_PASSWORD = '*kh550408'
+EMAIL_USE_TLS = True
 
 # """
 # Django settings for toy project.

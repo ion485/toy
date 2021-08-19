@@ -25,14 +25,24 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="">
                         {% if not request.user.is_authenticated %}
-                        <a href="/user/create/">가입하기</a>
+                            <a href="/user/create/">가입하기</a>
                         {% endif %}
                     </li>
                     <li class="">
                         {% if request.user.is_authenticated %}
-                        <a href="/user/logout/">로그아웃</a>
+                            <a href="/user/logout/">로그아웃</a>
                         {% else %}
-                        <a href="/user/login/">로그인</a>
+                            <a href="/user/login/">로그인</a>
+                        {% endif %}
+                    </li>
+                    <li class="">
+                        {% if request.user.is_authenticated %}
+                            <a href="/user/change/">비밀번호 변경</a>
+                        {% endif %}
+                    </li>
+                    <li class="">
+                        {% if request.user.is_authenticated %}
+                            <a href="/user/rest/">비밀번호 초기화</a>
                         {% endif %}
                     </li>
                 </ul>

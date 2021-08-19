@@ -14,10 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
 
 from board.views import paraListView, paraDetailView, paraCUView
-from user.views import UserRegistView, UserLoginView, NaverLoginCallbackView, KakaoLoginCallbackView
+from user.views import UserRegistView, UserLoginView, UserCheckView, NaverLoginCallbackView, KakaoLoginCallbackView
+from django.contrib.auth import views as auth_views 
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -29,8 +31,15 @@ urlpatterns = [
     path('user/create/', UserRegistView.as_view()),
     path('user/login/', UserLoginView.as_view()),
     path('user/logout/', LogoutView.as_view()),
+    path('user/<pk>/<token>/', UserCheckView.as_view()),
     path('user/login/social/naver/callback/', NaverLoginCallbackView.as_view()),
     path('user/login/social/kakao/callback/', KakaoLoginCallbackView.as_view()),
+
+    path('user/change/', auth_views.PasswordChangeView.as_view()),
+    path('user/change_done', auth_views.PasswordChangeDoneView.as_view()),
+    path('user/reset/', auth_views.PasswordResetView.as_view()),
+    path('user/reset_done/', auth_views.PasswordResetDoneView.as_view()),
+    path('user/reset_confirm', auth_views.PasswordResetConfirmView.as_view()),
 
     path('admin/', admin.site.urls),
 ]

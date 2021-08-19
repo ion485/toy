@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.mail import send_mail
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.base_user import BaseUserManager
 
 from django.contrib.auth.models import (
@@ -19,7 +20,7 @@ class UserManager(BaseUserManager):
             raise ValueError('이메일은 필수 항목입니다.')
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
-        user.set_password(password)
+        user.set_password(make_password(password))
         user.save(using=self._db)
         return user
 
@@ -45,6 +46,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField('권한', default=False)
     date = models.DateTimeField('가입일', default=timezone.now)
     location = models.CharField('소셜', max_length=30, default=False)
+    is_active = models.BooleanField(_('active'), default=False)
 
     objects = UserManager()
 
